@@ -1,0 +1,41 @@
+AI-generálás naplója (4.1. TDD és BDD tesztfejlesztés)
+======================================================
+
+Használt AI: Claude (Anthropic), modell: Claude Opus 5.5
+Felület: claude.ai (Claude, agent mód GitHub-hozzáféréssel)
+Session link: https://claude.ai/code/session_015n97fo3PZiBt95fVmVvFXz
+Dátum: 2026-11-14
+
+Az AI a beszélgetés elején megkapta a teljes feladatleírást (csatolt szövegfájlként),
+és ennek alapján generálta a teszteket.
+
+
+Promptok (pontosan, ahogy beírtam)
+----------------------------------
+
+1. prompt (a feladatleírás csatolásával):
+   "ez a feladatom Tesztelés gyakorlata beadandora, itt mit kéne csinálnom?"
+
+2. prompt:
+   "szóval akkor ha jol ertem a rest api végpontokat és a tdd és bdd cuccokat aial kell megcsinálni igaz?"
+
+3. prompt (ez generálta a teszteket):
+   "akkor csináld meg amik aial kötelezőek, és pushold fel gitre"
+
+
+Az AI által generált fájlok
+---------------------------
+
+- test_app.py                        -> unit tesztek (pytest), 9 tesztfüggvény / 17 teszteset
+- features/osszegzes.feature         -> BDD viselkedésleírás (Gherkin), 4 scenario
+- features/steps/osszegzes_steps.py  -> a Gherkin lépések implementációja (behave)
+- features/environment.py            -> behave környezet (friss app minden scenario előtt)
+
+A tesztek által rögzített interfész (az implementációnak ehhez kell igazodnia):
+- app.py: NumberStore osztály (add, total, reset) és create_app() Flask factory
+- POST /numbers  body: {"number": <egész>}  -> 201, hibás bemenetnél 400 + {"error": ...}
+- GET  /sum      -> 200, {"sum": <összeg>}
+- POST /reset    -> 200, kiüríti a tárolót
+
+A tesztek az implementáció előtt készültek (test-first), ezért app.py nélkül
+még pirosak (ImportError) - ez a TDD "red" fázisa.
