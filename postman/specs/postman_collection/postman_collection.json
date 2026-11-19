@@ -1,0 +1,50 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "postman_collection",
+    "version": "1.0.0",
+    "description": ""
+  },
+  "servers": [
+    {
+      "url": "http://127.0.0.1:5000"
+    }
+  ],
+  "paths": {
+    "/reset": {
+      "post": {
+        "summary": "reset",
+        "responses": {}
+      }
+    },
+    "/sum": {
+      "get": {
+        "summary": "kezdeti_osszeg",
+        "responses": {}
+      }
+    },
+    "/numbers": {
+      "post": {
+        "summary": "szam_jofeltoltes_5",
+        "responses": {},
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "number": {
+                    "type": "integer"
+                  }
+                }
+              },
+              "example": {
+                "number": 5
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

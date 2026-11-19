@@ -1,0 +1,21 @@
+# Use this workspace to collaborate
+workspace:
+  id: d8cfe7b1-c311-417e-8cf4-ebf4fbfdd195
+
+localResources:
+  specs:
+    - ../postman/specs/postman_collection/postman_collection.json
+resourceNameMappings:
+  specs:
+    - ../postman/specs/postman_collection/postman_collection.json: postman_collection
+
+# Each entry here maps a local resource to one or more corresponding objects in Postman Cloud
+cloudResources:
+  collections:
+    ../postman/collections/postman_collection: 60308478-49a18b58-2822-4e92-a101-df8258a9068f
+  environments:
+    ../postman/environments/testoldal.environment.yaml: 60308478-5c1a8f1d-0698-484b-81ba-da8647c6884d
+  specs:
+    ../postman/specs/postman_collection/postman_collection.json: b9c83a2d-a912-40b4-bcce-e2c58b33f5ff
+  globals:
+    ../postman/globals/workspace.globals.yaml: 51ad9ecf-9a11-4cfd-866f-9feb88f8a27f

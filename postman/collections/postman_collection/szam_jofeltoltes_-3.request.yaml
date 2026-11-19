@@ -1,0 +1,23 @@
+$kind: http-request
+url: http://127.0.0.1:5000/numbers
+method: POST
+body:
+  type: json
+  content: '{"number": -3}'
+scripts:
+  - type: afterResponse
+    code: "pm.test(\"Státuszkód 201\", function () {\r
+
+      \    pm.response.to.have.status(201);\r
+
+      });\r
+
+      \r
+
+      pm.test(\"Visszaadja a számot\", function () {\r
+
+      \    pm.expect(pm.response.json().number).to.eql(-3);\r
+
+      });"
+    language: text/javascript
+order: 9000

@@ -1,0 +1,23 @@
+$kind: http-request
+url: http://127.0.0.1:5000/numbers
+method: POST
+body:
+  type: json
+  content: '{"number": true}'
+scripts:
+  - type: afterResponse
+    code: "pm.test(\"Státuszkód 400\", function () {\r
+
+      \    pm.response.to.have.status(400);\r
+
+      });\r
+
+      \r
+
+      pm.test(\"Van hibaüzenet\", function () {\r
+
+      \    pm.expect(pm.response.json()).to.have.property(\"error\");\r
+
+      });"
+    language: text/javascript
+order: 3000

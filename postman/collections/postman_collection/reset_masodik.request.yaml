@@ -1,0 +1,12 @@
+$kind: http-request
+url: http://127.0.0.1:5000/reset
+method: POST
+scripts:
+  - type: afterResponse
+    code: "pm.test(\"Státuszkód 200\", function () {\r
+
+      \    pm.response.to.have.status(200);\r
+
+      });"
+    language: text/javascript
+order: 8997
