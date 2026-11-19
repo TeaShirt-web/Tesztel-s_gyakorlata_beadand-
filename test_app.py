@@ -88,7 +88,6 @@ def test_hibas_keres_400_valaszt_ad(client, body):
     response = client.post("/numbers", json=body)
     assert response.status_code == 400
     assert "error" in response.get_json()
-    # a hibás kérés nem módosíthatja az összeget
     assert client.get("/sum").get_json() == {"sum": 0}
 
 
